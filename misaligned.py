@@ -1,15 +1,28 @@
-def print_color_map():
-    major_colors = ["White", "Red", "Black", "Yellow", "Violet"]
+def generate_color_map():
+    major_colors = ["White", "Red", "Black", "Yellow"]
     minor_colors = ["Blue", "Orange", "Green", "Brown", "Slate"]
-    len_major = [len(i) for i in major_colors ] 
-    len_minor = [len(i) for i in minor_colors ]
-    total_color = len(major_colors)*len(minor_colors)
+    
+    color_map = []
+    
     for i, major in enumerate(major_colors):
         for j, minor in enumerate(minor_colors):
-            print(f'{i * 5 + j} | {major} | {minor}')
-    return len(major_colors) * len(minor_colors)
+            color_map.append((i * 5 + j, major, minor)) #it will give error if the size of list changes
+    
+    return color_map
+
+def print_color_map(color_map):
+    for row in color_map:
+        print(f'{row[0]} | {row[1]} | {row[2]}')
 
 
-result = print_color_map()
-assert(result == 25)
+color_map = generate_color_map()
+
+
+assert len(color_map) == 20, f"Expected 25 rows, but got {len(color_map)}"
+assert color_map[4] == (4, "White", "Blue"), f"First row mismatch: {color_map[4]}"
+assert color_map[-1] == (24, "Violet", "Slate"), f"Last row mismatch: {color_map[-1]}"
+
+
+print_color_map(color_map)
+
 print("All is well (maybe!)\n")
