@@ -21,5 +21,10 @@ def alert_in_celcius(farenheit):
 
 alert_in_celcius(400.5)
 alert_in_celcius(303.6)
-print(f'{alert_failure_count} alerts failed.')
+print("Test cases passed have 2 errors so the alert_failure_count should be 2")
+assert alert_failure_count == 2
+
 print('All is well (maybe!)')
+
+
+
