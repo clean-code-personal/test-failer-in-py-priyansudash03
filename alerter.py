@@ -2,9 +2,8 @@ alert_failure_count = 0
 
 def network_alert_stub(celcius):
     print(f'ALERT: Temperature is {celcius} celcius')
-    # Return 200 for ok
-    # Return 500 for not-ok
-    # stub always succeeds and returns 200
+    if celcius>200
+        return 500
     return 200
 
 def alert_in_celcius(farenheit):
@@ -21,10 +20,6 @@ def alert_in_celcius(farenheit):
 
 alert_in_celcius(400.5)
 alert_in_celcius(303.6)
-print("Test cases passed have 2 errors so the alert_failure_count should be 2")
-assert alert_failure_count == 2
+assert(alert_failure_count == 2), f"Expected 2 failures, but got {alert_failure_count}"
 
 print('All is well (maybe!)')
-
-
-
