@@ -1,28 +1,23 @@
+color_map = []
+
 def generate_color_map():
-    major_colors = ["White", "Red", "Black", "Yellow"]
+    major_colors = ["White", "Red", "Black", "Yellow", "Violet"]
     minor_colors = ["Blue", "Orange", "Green", "Brown", "Slate"]
-    
-    color_map = []
-    
     for i, major in enumerate(major_colors):
         for j, minor in enumerate(minor_colors):
-            color_map.append((i * 5 + j, major, minor)) #it will give error if the size of list changes
-    
-    return color_map
+            color_map.append(f'{i * 5 + j} | {major} | {minor}')
+    return len(major_colors) * len(minor_colors)
 
-def print_color_map(color_map):
-    for row in color_map:
-        print(f'{row[0]} | {row[1]} | {row[2]}')
+def display_color_map(color_map):
+    for entry in color_map:
+        print(entry)
 
+generate_color_map()
+display_color_map(color_map)
 
-color_map = generate_color_map()
-
-
-assert len(color_map) == 20, f"Expected 25 rows, but got {len(color_map)}"
-assert color_map[4] == (4, "White", "Blue"), f"First row mismatch: {color_map[4]}"
-
-
-
-print_color_map(color_map)
+assert(color_map[-1] == '24 | Violet | Slate'), "The last entry does not match the expected value"
+assert(len(color_map) == 25), "The total number of entries in the color map should be 25"
+assert(all(entry.find('|', entry.find('|') + 1) - entry.find('|') - 1 == 6 for entry in color_map)), "Major color alignment is incorrect"
+assert(all(len(entry.split('|')[2]) == 6 for entry in color_map)), "Minor color alignment is incorrect"
 
 print("All is well (maybe!)\n")
